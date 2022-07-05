@@ -12,10 +12,10 @@
 </head>
 
 <body>
-    <div class="login" >
+    <div class="login">
         <h1>Find News is Real or Fake</h1>
 
-        <form action="" method="post">
+        <form action="{{ url_for('predict')}}" method="post">
             <input type="text" name="news" placeholder="Enter the news url" required="required" />
             <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
 
@@ -23,7 +23,7 @@
 
         <br>
         <br>
-        prediction_text
+        {{ prediction_text}}
 
     </div>
 </body>
