@@ -1,1 +1,8 @@
+model training 
 https://colab.research.google.com/drive/1R43E7QwtnEk14rG_L3ul5lzVXeJ65mAi?usp=sharing
+
+article
+https://colab.research.google.com/drive/1XyGg7ORUjX_QZeoDApeMryf_6BkEH_6R?usp=sharing
+
+model 2
+https://colab.research.google.com/drive/1yF4F-ykqmmu9T_rBuIkGVFKk5aYPPGER?usp=sharing
