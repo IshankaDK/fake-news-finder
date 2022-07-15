@@ -40,7 +40,7 @@
             </div><br>
             <div class="card-body bg-transparent">
                 <form><br>
-                    <input type="text" name="news" placeholder="Enter the news url" required="required" class="form-control bg-dark text-white"  />
+                    <input type="text" id="news" name="news" placeholder="Enter the news url" required="required" class="form-control bg-dark text-white"  />
                     <button type="submit" class="btn btn-lg btn-success" name="submit" id="submit">Predict</button>
 				</form>
             </div>
@@ -65,15 +65,16 @@
 
 	typeWriter(source, 0);
 
-	$SCRIPT_ROOT = "{{ url_for('newscheck') }}";
+	$SCRIPT_ROOT = "{{ url_for('predict') }}";
 	$(function() {
 		$('#submit').bind('click', function() {
-			var news = $('#news').val(); 
+			var news = $('#news').val();
+            console.log(news); 
 			if(news === "" || news === " " || news === "\n" || news === null){
 		    	bootbox.alert({
       			 	size: "big",
     				title: "EMPTY FIELD",
-				    message: "Please enter some news!",
+				    message: "Please enter a link!",
 				    backdrop: true
 				});
 	      	}
@@ -81,6 +82,8 @@
 	      		$.getJSON($SCRIPT_ROOT, {
 		        	news: news,
 		      	}, function(data) {
+                    
+                    console.log("news", data);
 		      		if(data.result == "REAL"){
 		      			var src = "static/success.gif";
 		      		}

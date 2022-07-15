@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FAKE NEWS DETECTION</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
+    <style>
+        body {
+            background: black;
+            color: white;
+        }
+
+        .modal-body,
+        .modal-footer,
+        .modal-header {
+            background: #fff;
+            border: none;
+            color: black;
+        }
+
+        .modal-header .close {
+            color: red;
+            text-shadow: none;
+            size: 1.9rem;
+        }
+
+        .close {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div align="center" style="margin-top: 50px;" class="container">
+        <div class="card bg-transparent">
+            <div class="card-header bg-transparent">
+                <p id="source" data-text="FAKE NEWS DETECTION !"></p>
+                <h1 id="dest"></h1>
+            </div><br>
+            <div class="card-body bg-transparent">
+                <a href="http://127.0.0.1:5000/text">
+                    <button type="button" class="btn btn-lg btn-primary" name="forText" id="forText">Predict Using
+                        Text</button>
+                </a>
+                <a href="http://127.0.0.1:5000/link">
+                    <button type="button" class="btn btn-lg btn-primary" name="forLink" id="forLink">Predict Using
+                        LINK</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var source = $('#source').attr('data-text');
+    var dest = $('#dest');
+    function typeWriter(text, n) {
+        if (n < (text.length)) {
+            dest.html(text.substring(0, n + 1));
+            n++;
+            setTimeout(function () {
+                typeWriter(text, n)
+            }, 150);
+        }
+    }
+
+    typeWriter(source, 0);
+</script>
