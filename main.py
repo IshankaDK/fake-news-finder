@@ -34,6 +34,8 @@ def predict():
     article.parse()
     article.nlp()
     news = article.summary
+    # news = "dsafffffffffffhhlhjffffffhgutjiyrkiuyhmkdyjygyjyrjkyuhjklfuj,kjulf,uj,l"
+    # print(news)
     pred = model.predict([news])
     return render_template('index.html', prediction_text='The news is "{}"'.format(pred[0]))
     
