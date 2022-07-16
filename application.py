@@ -5,8 +5,8 @@ from flask_cors import CORS
 from newspaper import Article
 import urllib
 
-app = Flask(__name__)
-CORS(app)
+application = Flask(__name__)
+CORS(application)
 
 pickle_in = open('model_fakenews.pickle','rb')
 pac = pickle.load(pickle_in)
@@ -17,21 +17,21 @@ with open('model.pickle', 'rb') as handle:
 	model = pickle.load(handle)
 
 
-@app.route('/')
+@application.route('/')
 def main():
  	return render_template("main.html")
 
-@app.route('/text')
+@application.route('/text')
 def findByText():
  	return render_template("index.html")
 
 
-@app.route('/link')
+@application.route('/link')
 def findByLink():
     return render_template('index2.html')
 
 
-@app.route('/newscheck')
+@application.route('/newscheck')
 def newscheck():	
 	abc = request.args.get('news')	
 	input_data = [abc.rstrip()]
@@ -42,7 +42,7 @@ def newscheck():
 	return jsonify(result = y_pred[0])
 
 #Receiving the input url from the user and using Web Scrapping to extract the news content
-@app.route('/predict')
+@application.route('/predict')
 def predict():
     url = request.args.get('news')
     # url =request.get_data(as_text=True)[5:]
@@ -61,4 +61,4 @@ def predict():
 
 
 if __name__=='__main__':
-    app.run(debug=True)
+    application.run(debug=True)
